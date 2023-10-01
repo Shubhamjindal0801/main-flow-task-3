@@ -4,6 +4,8 @@ import Header from "./Header";
 
 function LoginPage() {
   const [userData, setUserData] = useState({});
+  const [isConPassVisible, setIsConPassVisible] = useState(false);
+
 
   useEffect(()=>{
     const user = localStorage.getItem('userDetails');
@@ -60,9 +62,26 @@ function LoginPage() {
             }
             value={userData.pass}
             required
-            type="password"
+           type={isPassVisible ? 'text' : 'password'}
             placeholder="Enter Your Password here"
           />
+          <>
+            {isPassVisible ? (
+              <span
+                class="material-symbols-outlined eye"
+                onClick={() => setIsPassVisible(!isPassVisible)}
+              >
+                visibility
+              </span>
+            ) : (
+              <span
+                class="material-symbols-outlined eye"
+                onClick={() => setIsPassVisible(!isPassVisible)}
+              >
+                visibility_off
+              </span>
+            )}
+          </>
         </div>
         <button type="submit">Login</button>
       </form>
