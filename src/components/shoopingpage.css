@@ -1,0 +1,23 @@
+body{
+    background-image: var(--landing-url);
+}
+.shooping-container{
+    position: absolute;
+    left: 5rem;
+    right: 5rem;
+    top: 15rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+#category{
+    position: absolute;
+    top:-5rem;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.8rem;
+    text-align: center;
+}

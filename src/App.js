@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import LandingPage from './components/LandingPage'
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import SignupPage from './components/SignupPage'
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import LoginPage from './components/LoginPage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToastContainer />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SignupPage />} />
+          <Route path='/signup' element={<SignupPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/landing' element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

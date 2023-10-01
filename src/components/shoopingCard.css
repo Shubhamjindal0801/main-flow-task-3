@@ -1,0 +1,32 @@
+.shoopingCard-container{
+    position: relative;
+    display: inline-block;
+    min-width: 250px;
+    width: 250px;
+    border: 2px dotted red;
+    text-align: center;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    background-color: #fff;
+}
+.shoopingCard-container:hover{
+    transform: scale(1.1);
+}
+.shopingCard-details{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 0 10px;
+}
+.sizes-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.shopingCard-details button{
+    padding: 0.4rem 1rem;
+    border: none;
+    background-color: #ccc;
+    width: 100%;
+    cursor: pointer;
+}
