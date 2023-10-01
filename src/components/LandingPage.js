@@ -5,6 +5,10 @@ import ShoopingPage from "./ShoopingPage";
 function LandingPage() {
   useEffect(()=>{
     document.documentElement.setAttribute("data-theme", "landing");
+    const user = localStorage.getItem("userDetails");
+    if(!user){
+      window.location.href = '/'
+    }
   },[])
   return (
     <div>

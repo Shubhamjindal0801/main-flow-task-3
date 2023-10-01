@@ -63,3 +63,13 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.eye{
+    position: absolute;
+    top: 45%;
+    transform: translateY(-40%);
+    right:10px;
+}
+.eye {
+    color: rgb(199, 198, 198);
+}

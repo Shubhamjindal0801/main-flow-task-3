@@ -13,7 +13,7 @@ function Header({ prop }) {
   }, []);
 
   const handleLogoClick = () => {
-    window.location.href = "/landing";
+    window.location.href = "/";
   };
   const handleSignup = () => {
     window.location.href = "/signup";
@@ -35,7 +35,7 @@ function Header({ prop }) {
       </div>
       {prop ? (
         <div>
-          <h3>Welcome {user ? user.name : ''}</h3>
+          <h3 style={{cursor:'default'}} >Welcome {user ? user.name : ''}</h3>
         </div>
       ) : (
         <></>

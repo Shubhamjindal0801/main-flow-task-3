@@ -1,43 +1,45 @@
 import React, { useEffect, useState } from "react";
 import "./signupPage.css";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import Header from "./Header";
 
 function SignupPage() {
   const [userData, setUserData] = useState({});
+  const [isPassVisible, setIsPassVisible] = useState(false);
+  const [isConPassVisible, setIsConPassVisible] = useState(false);
 
-  useEffect(()=>{
-    const user = localStorage.getItem('userDetails');
-    if(user)window.location.href = '/landing'
+  useEffect(() => {
+    const user = localStorage.getItem("userDetails");
+    if (user) window.location.href = "/landing";
     document.documentElement.setAttribute("data-theme", "form");
-  },[])
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(userData.phone.length !==10){
-        return toast.error('Phone Number must be of length 10')
+    if (userData.phone.length !== 10) {
+      return toast.error("Phone Number must be of length 10");
     }
-    if(userData.pass !== userData.conPass){
-        return toast.error('Password must be same')
+    if (userData.pass !== userData.conPass) {
+      return toast.error("Password must be same");
     }
-    if(userData.pass.length < 6){
-        toast.error('Pass must be of length 6')
+    if (userData.pass.length < 6) {
+      toast.error("Pass must be of length 6");
     }
     let userDetails = {
-        name: userData.name,
-        phone: userData.phone,
-        email: userData.email,
-        pass: userData.pass
-    }
-    localStorage.setItem('userDetails', JSON.stringify(userDetails))
+      name: userData.name,
+      phone: userData.phone,
+      email: userData.email,
+      pass: userData.pass,
+    };
+    localStorage.setItem("userDetails", JSON.stringify(userDetails));
     setUserData({
-        name:'',
-        email:'',
-        phone:'',
-        pass:'',
-        conPass:''
+      name: "",
+      email: "",
+      phone: "",
+      pass: "",
+      conPass: "",
     });
-    toast.success('Account Created successfully')
+    toast.success("Account Created successfully");
     window.location.reload();
   };
 
@@ -109,9 +111,26 @@ function SignupPage() {
             }
             value={userData.pass}
             required
-            type="password"
+            type={isPassVisible ? 'text' : 'password'}
             placeholder="Enter Your Password here"
           />
+          <>
+            {isPassVisible ? (
+              <span
+                class="material-symbols-outlined eye"
+                onClick={() => setIsPassVisible(!isPassVisible)}
+              >
+                visibility
+              </span>
+            ) : (
+              <span
+                class="material-symbols-outlined eye"
+                onClick={() => setIsPassVisible(!isPassVisible)}
+              >
+                visibility_off
+              </span>
+            )}
+          </>
         </div>
         <div>
           <label>
@@ -119,16 +138,33 @@ function SignupPage() {
           </label>
           <input
             onChange={(e) =>
-                setUserData({
-                  ...userData,
-                  conPass: e.target.value,
-                })
-              }
+              setUserData({
+                ...userData,
+                conPass: e.target.value,
+              })
+            }
             value={userData.conPass}
             required
-            type="password"
+            type={isConPassVisible ? 'text' : 'password'}
             placeholder="Confirm Your Password"
           />
+          <>
+            {isConPassVisible ? (
+              <span
+                class="material-symbols-outlined eye"
+                onClick={() => setIsConPassVisible(!isConPassVisible)}
+              >
+                visibility
+              </span>
+            ) : (
+              <span
+                class="material-symbols-outlined eye"
+                onClick={() => setIsConPassVisible(!isConPassVisible)}
+              >
+                visibility_off
+              </span>
+            )}
+          </>
         </div>
         <button type="submit">Sign Up</button>
       </form>
